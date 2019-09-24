@@ -58,4 +58,9 @@ public class User {
 		this.salary = salary;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", dept=" + dept + ", salary=" + salary + "]";
+	}
+
 }
