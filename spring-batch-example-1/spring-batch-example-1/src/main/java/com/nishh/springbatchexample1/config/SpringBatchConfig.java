@@ -1,5 +1,6 @@
 package com.nishh.springbatchexample1.config;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -43,9 +44,9 @@ public class SpringBatchConfig {
 	}
 
 	@Bean
-	public FlatFileItemReader<User> fileItemReader(@Value("${input}") Resource resource) {
-		FlatFileItemReader<User> flatItemReader = new FlatFileItemReader<>();
-		flatItemReader.setResource(resource);
+	public FlatFileItemReader<User> fileItemReader() {
+		FlatFileItemReader<User> flatItemReader = new FlatFileItemReader<User>();
+		flatItemReader.setResource(new ClassPathResource("user.csv"));
 		flatItemReader.setName("CSV-READER");
 		flatItemReader.setLinesToSkip(1);
 		flatItemReader.setLineMapper(linemapper());
